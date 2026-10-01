@@ -8,7 +8,7 @@ print(f"{a} * {b} = {a * b}")
 print(f"{a} / {b} = {a / b if b != 0 else '除数不能为零'}")
 print("平方:", a ** 2,b**2)
 print("平均值:", (a + b) / 2)
-
+print("立方:",a*a*a,b*b*b)
 
 
 
