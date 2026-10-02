@@ -23,7 +23,7 @@ int main()
 
 	//2.判断
 	//同一排: rowa == rowb
-	//连着坐: numa  -numb   1   -1
+	//连着坐: numa 和 numb 的差值是 1 (差1 或 差-1 都算挨着)
 
 	printf("%d排,%d个\n", rowa,numa);
 	printf("%d排,%d个\n", rowb,numb);
