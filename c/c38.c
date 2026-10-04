@@ -127,5 +127,11 @@ int main()
 
 
 
+	int aa = 10;
+	double r*r = aa;
+	printf("%lf\n",r);
+
+
+
 	return 0;
 }
