@@ -7,6 +7,28 @@ int main()
 	printf("期末考试分数最高为100分\n");
 	printf("请输入你的考试成绩:\n");
 	scanf("%d", &point);
+
+
+	if (point < 0 && point >= 100)
+		//也可改为||
+		//但此时需要改变一下写法
+
+	{
+		printf("正常数据\n");
+	}
+
+	else  
+
+	{
+		printf("异常数据\n");
+	}
+
+
+	//也可以把下面的代码复制上来
+	//即放在  printf("正常数据\n"); 这段代码之间
+
+
+
 	
 
 	if (point <= 100 && point >= 85)
