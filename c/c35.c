@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 int main()
 {
@@ -37,11 +38,127 @@ int main()
 
 	//第四次循环: i=4;
 
-    //  2.
+    
+	printf("1~100 分析结果\n");
+
+	/*int num;
+	printf("请输入整数\n");
+	scanf("%d",&num);*/
+	
+	printf("以下这些整数可以被3整除:\n");
+
+	for (int i = 1; i <= 100; i++)
+	{
+		if (i % 3 == 0)
+		{
+			printf("%d  ", i);
+		}
+	}
+
+
+	printf("以下这些整数不可以被3整除:\n");
+
+	for (int i = 1; i <= 100; i++)
+	{
+		if (i % 3 != 0)
+		{
+			printf("%d  ", i);
+		}
+	}
+
+	printf("\n");
+
+
+	int count = 0;
+
+	for (int i = 1; i <= 100; i++)
+	{
+		if (i % 3 == 0)
+		{
+			count++;
+		}
+	}
+
+
+	printf("0到100中,可以被3整除的整数有%d\n",count);
+
+
+	for (int i = 1; i <= 9; i++)
+	{
+		for (int j = 1; j <= i; j++)
+		{
+
+			printf("%d*%d=%d\t", j, i, i * j);
+
+		}
+
+		printf("\n");
+
+	}
+
+
+
+	int arr[3][4];
+	for (int i = 0; i < 3; i++)        // ← 结构完全一样
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			arr[i][j] = i * 4 + j;
+		}
+		printf("\n");
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			printf("%d\t", arr[i][j]);
+		}
+		printf("\n");
+	}
+
+	int i;
+	for (i = 1; i <= 5; i++ )
+	{
+		printf("%d  ",i);
+	}
+
+	printf("\n");
+	
+	for (i = 5; i>=1; i--)
+	{
+		printf("%d  ", i);
+	}
+
+	printf("\n");
+
+
+	//求和
+
+	//需求:1~5之间
+
+	int sum = 0;
+
+	for (int i = 1;i <= 5;i++)
+		
+	{
+		printf("%d  ",i);
+		sum = sum + i;
+
+		//1.sum + i
+		//0+1
+		//2.sum + i
+		//1+2
+		//3.sum + i
+		//3+3
 
 
 
 
+	}
+
+	printf("\n");
+	printf("得到的总和:%d\n", sum);
 
 	return 0;
 }
