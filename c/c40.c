@@ -40,6 +40,87 @@ void sum1(int num)
 	}
 }
 
+int sun(int base, int addition)
+{
+	int sun = base + addition;
+	return sun;
+}
+
+int result(int bas, int add,int tion)
+{
+	int result = bas + add +tion;
+	return result;
+}
+
+
+//void  没有返回值    整数改为int,小数改为double
+
+//return  1.结束函数
+//2.把后面的数据,交给调用处
+
+//void sum(int num1, int num2) //返回值类型 函数名(形参1,形参2)
+//{
+//	int sum = num1 + num2;   //函数体
+//	return sum;              //return 返回值;
+//}
+
+//返回值类型与返回值要对应起来
+
+//变量=函数名(实参);
+//printf("占位符",函数名(实参));
+//一般使用上面的
+
+
+//需求:
+//小桂桂考试成绩，基础得分93，附加得分10。
+//小丹丹考试成绩，基础得分87，附加得分9。
+//请问谁的总分高？
+ 
+
+
+//最终格式:
+//返回值类型 函数名(形参1,形参2)
+//{
+//函数体;
+//return 返回值;
+//}
+
+
+//调用格式:
+//变量=函数名(实参);
+//printf("占位符",函数名(实参));
+//一般使用上面的
+
+//提高代码的复用性
+//提高代码的可维护性
+
+
+//定义函数的终极绝招
+//三个问题:
+//1.我定义函数是为了干什么?            函数体
+//1.干这件事需要什么才能完成           形参
+//3.我干完了,调用处是否需要继续使用     返回值类型
+
+//需要时,返回值必须写;不需要 则用void
+
+
+double area (double length,double width)
+{
+	double area = length * width;
+	return area;
+}
+
+
+double re (double r)
+{
+	double re = r;
+	return re;
+}
+
+
+
+
+
 
 
 
@@ -75,6 +156,87 @@ int main()
 	sum(20, 90);
 
 	sum1(8);
+
+	int score1 = sun(93, 10);
+	int score2 = sun(87, 9);
+
+	if (score1>score2)
+	{
+		printf("\n");
+		printf("小惠惠的成绩更高\n");
+	}
+	else if (score1 < score2)
+	{
+		printf("\n");
+		printf("小丹丹的成绩更高\n");
+	}
+	else
+	{
+		printf("\n");
+		printf("二者分数相等\n");
+	}
+
+	int sore1 = result(10, 20, 15);
+	int sore2 = result(20, 30, 17);
+	int sore3 = result(19, 17, 20);
+	int sore4 = result(23, 21, 19);
+
+	int max = sore1;               // 第一个先上台当擂主
+
+	if (sore2 > max) max = sore2;  // 挑战者赢了就换人
+	if (sore3 > max) max = sore3;
+	if (sore4 > max) max = sore4;
+
+	printf("季度营销额最高为%d\n", max);
+
+	/*int max = sore1;
+	max = sore2 > max ? sore2 : max;
+	max = sore3 > max ? sore3 : max;
+	max = sore4 > max ? sore4 : max;*/
+
+	area(5.3, 1.8);
+	area(3.1, 8.2);
+
+	double areaa= area(5.3, 1.8);
+	double areab= area(3.1, 8.2);
+
+	if (areaa > areab)
+	{
+		printf("长方形a的面积更大\n");
+		printf("长方形b的面积为:%lf\n",areaa);
+	}
+	
+	else if(areaa < areab)
+	{
+		printf("长方形b的面积更大\n");
+		printf("长方形b的面积为:%lf\n",areab);
+	}
+	else
+	{
+		printf("二者的面积相同\n");
+		printf("长方形b的面积为:%lf","长方形b的面积为: % lf\n", areaa,areab);
+	}
+
+	re(5.4);
+	re(6.2);
+
+
+	double r1 = re(5.4);
+	double r2 = re(6.2);
+
+	if (r1 > r2)
+	{
+		printf("圆一的半径大\n");
+	}
+	else if (r1 > r2)
+	{
+		printf("圆二的半径大\n");
+	}
+	else
+	{
+		printf("二者半径一样大\n");
+	}
+
 	//1.函数的定义
 	
 	
