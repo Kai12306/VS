@@ -32,14 +32,19 @@ int main()
 	int len = sizeof(arr) / sizeof(int);
 
 	//设种子:整个程序只调一次!
-	//time(NULL) 只精确到秒,同一秒内跑多次结果会完全一样
-	//用 time ^ GetTickCount 混合,才能做到每次都不一样(开机毫秒数)
-	srand((unsigned int)(time(NULL) ^ (unsigned int)GetTickCount()));
+	//(下面这条是毫秒级种子,手动调试用不到,先留着备用)
+	//srand((unsigned int)(time(NULL) ^ (unsigned int)GetTickCount()));
+	// [补充] time 返回 time_t, 转成 unsigned int 是 srand 要求的参数类型
+	// [重要] srand 全程序只调一次, 放在循环里会让随机数变"规律"
+	srand((unsigned int)time(NULL));
 
 	//重要:打乱数组必须倒序洗牌(Fisher-Yates)
 	//      正序洗的话,前面换好的位置会被后面的 i 又换回去,概率不均匀
+	// [核心] Fisher-Yates 洗牌算法: 从后往前, 把第 i 个和 [0,i] 中随机一个交换
+	//        这样每种排列的概率都相等, 是"最公平"的洗牌法
 	for (int i = len - 1; i > 0; i--)
 	{
+		// [核心] 随机范围是 [0, i], 所以是 rand() % (i+1) 而不是 %len
 		int index = rand() % (i + 1);
 		int temp = arr[i];
 		arr[i] = arr[index];

@@ -29,6 +29,9 @@ int main()
 	printf("%d排,%d个\n", rowb,numb);
 	
 
+	// [推演] rowa=5,rowb=1 排不同 -> 左边为假 -> && 短路 -> 走 else 打游戏
+	// [优化] 判断"相邻"更简洁的写法: (numa - numb == 1 || numb - numa == 1)
+	//        或者用绝对值 abs(numa-numb) == 1 (需包含 stdlib.h)
 	if ((rowa == rowb) && (numa - numb == 1 || numa - numb == -1))
 	{
 		printf("我会和他开心看电影\n");

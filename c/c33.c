@@ -26,6 +26,8 @@ int main()
 	case 3:
 		printf("机票改签\n");
 		break;
+	// [优化] 这里其实可以直接用 default 收口("其他键都退出"),
+	//        省掉 4~0 七行; 现在的写法也能跑, 只是啰嗦
 	case 4:
 	case 5:
 	case 6:

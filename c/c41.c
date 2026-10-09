@@ -63,6 +63,7 @@ int main()
 	printf("%lf\n", res2);
 
 	//ceil()   向上取整
+	// [注意] ceil 是向上取整 -> 10; floor 是向下取整 -> 9
 	double res3 = ceil(9.87);
 	printf("%lf\n", res3);
 
@@ -71,6 +72,8 @@ int main()
 	printf("%lf\n", res4);
 		
 	//abs()    绝对值
+	// [补充] 绝对值按类型分: abs(int) / labs(long) / llabs(long long); 小数用 fabs
+	//        用错不报错但结果可能不对
 	int res5 = abs(-10);
 	printf("%d\n", res5);
 
@@ -98,6 +101,8 @@ int main()
      // 返回值: long long
 	 //time(NULL);
 
+	// [补充] time(NULL) 返回从 1970-01-01 00:00:00 UTC 到现在的秒数(时间戳)
+	//        传 NULL 表示"不需要额外存到别处"
 	long long res = time(NULL);
 	printf("%lld\n",res);
 
@@ -118,6 +123,8 @@ int main()
 
 	printf("\n");
 
+	// [核心] srand 设"种子"; 种子相同, rand 出来的序列完全相同(所以叫伪随机)
+	// [易错] srand 整个程序只需调用一次, 千万别放进循环里
 	srand(1);
 
 	for (int i = 1;i <= 20;i++)
@@ -139,6 +146,7 @@ int main()
 	printf("\n");
 
 	
+		// [正确] 用"当前时间"当种子, 每次运行都不同 -> 看起来才像真随机
 		srand(time(NULL));
 		for (int i = 1;i <= 20;i++)
 		{
@@ -174,6 +182,8 @@ int main()
 		//使用键盘录入去猜，猜中为止
 
 		srand(time(NULL));
+		// [核心] 生成 [1,100] 的公式: rand() % 范围 + 起点
+		//        [a,b] 的通用公式: rand() % (b-a+1) + a
 		int num = rand() % 100 + 1;
 
 		//循环加键盘录入
@@ -184,6 +194,7 @@ int main()
 
 		int guess;
 
+		// [核心] while(1) 是死循环, 靠内部的 break 跳出(猜到才 break)
 		while (1)
 		{
 			printf("请输入你猜的数字:\n");

@@ -1,6 +1,8 @@
 //1.函数基本定义格式
 
-void playgame()  //函数名()
+// [核心] 函数三要素: 返回值类型 函数名(形参列表)
+//        void 表示"不返回任何东西", 调用它就是执行一段打包好的代码
+void playgame()
 {
 	printf("好好加油\n");
 	printf("好好努力\n");
@@ -20,8 +22,12 @@ void playgame()  //函数名()
 //}
 
 //3.带参数的函数
+// [核心] 形参 = 函数"接收输入"的口子; 调用时传的实参按顺序一一对应
+// [优化] 形参之间逗号后加空格: sum(int num1, int num2)
 void sum(int num1,int num2)
 {
+	// [易错] 局部变量名叫 sum, 和函数名 sum 同名 —— 能编译但极易混;
+	//        局部变量会"遮住"函数名, 建议改叫 result
 	int sum = num1 + num2;
 	printf("这两个数相加的和:%d\n", sum);
 }
@@ -40,12 +46,15 @@ void sum1(int num)
 	}
 }
 
+// [易错] 函数名 sun、局部变量名也叫 sun, 又是同名遮蔽; 建议变量叫 total
+// [补充] int 返回值类型 -> 调用处可以用变量接住
 int sun(int base, int addition)
 {
 	int sun = base + addition;
 	return sun;
 }
 
+// [注意] 参数名被截短成 bas/add/tion, 可读性差; 应写全 base/addition/third
 int result(int bas, int add,int tion)
 {
 	int result = bas + add +tion;
@@ -111,6 +120,9 @@ double area (double length,double width)
 }
 
 
+// [优化] 这个函数什么都没做(原样返回), 没有任何意义;
+//        若想算圆面积应是 r * r * 3.14159, 且函数名该叫 area_circle
+//        (本次只加注释, 不改动你的代码)
 double re (double r)
 {
 	double re = r;
@@ -157,6 +169,7 @@ int main()
 
 	sum1(8);
 
+		// [核心] 这就是函数的价值: 同一段逻辑用不同参数反复调用, 不用复制粘贴
 	int score1 = sun(93, 10);
 	int score2 = sun(87, 9);
 
@@ -181,7 +194,8 @@ int main()
 	int sore3 = result(19, 17, 20);
 	int sore4 = result(23, 21, 19);
 
-	int max = sore1;               // 第一个先上台当擂主
+	// [核心] 求多值最大值"打擂台"法: 先立擂主, 挑战者更强就换人
+	int max = sore1;
 
 	if (sore2 > max) max = sore2;  // 挑战者赢了就换人
 	if (sore3 > max) max = sore3;
@@ -215,6 +229,9 @@ int main()
 	{
 		printf("二者的面积相同\n");
 		printf("长方形b的面积为:%lf","长方形b的面积为: % lf\n", areaa,areab);
+		// [重要] 这行有个明显的坑: 格式串只有 1 个 %lf, 却传了 3 个参数;
+		//        多出来的实参被丢弃, 而且第二个参数是字符串却配 %lf, 输出必然是乱码
+		// [正确写法] printf("面积a=%.2lf, 面积b=%.2lf\n", areaa, areab);
 	}
 
 	re(5.4);

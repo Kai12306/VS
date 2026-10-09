@@ -1,4 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS 
+#define _CRT_SECURE_NO_WARNINGS
+// [补充] 关掉 VS 的 scanf C4996 安全检查警告 
 #include<stdio.h>
 int main()
 {
@@ -23,6 +24,8 @@ int main()
 	//2.键盘录入多个数据
 	printf("请输入两个整数:");
 	scanf("%d %d",&num1 , &num2);
+	// [重要] 多个 %d 之间用空白分隔时, 输入可以用空格/回车/Tab 分隔
+	// [易错] 但如果是 "%d,%d" 带逗号, 输入就必须打逗号, 少一个就只剩第一个数被读到
 
 	//注意: %d %d , 需要与输出界面一致
 	//空格的多少没关系,但要是有逗号,输出界面就一定也要有
@@ -34,6 +37,7 @@ int main()
 
 	//3.相加并输出
 	printf("%d\n",num1+num2);
+	// [优化] 直接用表达式做参数可以, 但若同一结果要多次用, 建议先存变量, 避免重复计算
 	printf("%d\n", num1);
 	printf("%d\n", num2);
 

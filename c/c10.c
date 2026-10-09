@@ -19,6 +19,8 @@ int main()
 	//2.键盘录入
 	printf("请输入一个整数\n");
 	scanf("%ld",&a);
+	// [注意] scanf 里 long 必须是 %ld; 写 %d 会把 4 字节数据写进 4 字节, 值可能被截断
+	// [易错] 千万别漏 &  ——  漏了 & 会直接写到非法地址, 程序崩
 
 	//3.打印一下
 	printf("变量a里的值:%ld\n", a);
@@ -43,6 +45,8 @@ int main()
 	int ret = 0;
 
 	ret = scanf("%d", &c);
+	// [补充] scanf 的返回值 = 成功读到的项数;
+	//   输入 "abc" 会返回 0 (一个都没读到), 可用它判断输入是否合法
 
 	printf("ret = %d, c = %d\n", ret, c);
 
@@ -53,6 +57,7 @@ int main()
 
 
 	printf("sizeof(long) = %d 字节\n", (int)sizeof(long));
+	// [注意] sizeof 返回 size_t, 这里强制转成 int 才能配 %d; 直接写 %zu 更规范
 	printf("sizeof(int)  = %d 字节\n", (int)sizeof(int));
 
 

@@ -1,4 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+// [补充] VS 认为 scanf/strcpy 不安全会报 C4996; 这行宏关掉警告
+// [重要] 这行必须写在所有 #include 之前才生效
 #include<stdio.h>
 int main()
 {
@@ -52,11 +54,14 @@ int main()
 
 	//2.键盘录入自己的年龄
 	printf("请输入自己的年龄:\n");
+	// [易错] 数组名 str 本身已经是地址, 这里写 &str 类型不对(虽然结果一样);
+	//        标准写法是 scanf("%s", str);  和 int 要加 & 的规则不一样!
 	scanf("%s",&str);
 
 
 	//3.输出打印
 	printf("你的年龄:%s\n",str);
+	// [易错] 这行用 %s 配 str: str 是字符数组名(本质是个地址), 能编译, 但打印的是数组里的内容而不是年龄
 
 
 	//1.定义变量:年龄

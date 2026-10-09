@@ -15,6 +15,8 @@ int main()
 
 	int i = 65536;
 	short b = (int)i;
+	// [易错] 这里强转成 int 没意义(i 本来就是 int), b 仍是 short
+	//        65536 超出 short 范围, 实际存进去的值是 0 (截断后取低 16 位)
 
 	//此时由于65536超出short范围,就会发生错误
 
@@ -32,7 +34,9 @@ int main()
 	/*short result = (short)(s1 + s2);  *///此时才正确
 	/*printf("%zu\n", sizeof((short)(s1 + s2)));*/
 
-	//c语言本身的的优化,c的底层已经做了一个强制转换
+	// [重要] s1 + s2 会自动提升为 int 运算, 结果再赋给 short
+	//        此时会触发隐式转换(可能丢精度), VS 会警告 C4244
+	//        想彻底消掉警告就写 short result = (short)(s1 + s2);
 	short result = s1 + s2;
 	printf("%d\n",result);
 

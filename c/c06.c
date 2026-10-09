@@ -11,6 +11,7 @@ int main()
 
 	//short 短整型 windows 2个字节   (-32768~32767)  (原本是short int)
 
+	// [注意] short 2 字节, 范围 -32768~32767, 存不下 20 万这种数
 	short a = 10;
 	printf("%d\n",a);
 
@@ -22,16 +23,20 @@ int main()
 
     // Linux 32位  4个字节     64位  8个字节
 	long c = 1000L;
+	// [重要] long 在 Windows 是 4 字节, Linux 64 位是 8 字节 —— 跨平台时长度会变!
+	// 需要"固定 8 字节"就用 long long
 	printf("%ld\n",c);
 
 	//long long(c99) 超长整型 windows 8个字节 (19位数)    (原本是long long int)
 
 	long long d = 10000LL;
+	// [补充] 后缀 LL 说明这是 long long 类型字面量; 不加也能自动识别, 加了更严谨
 	printf("%lld\n", d);
 
 	//2.用sizeof测量每一种数据类型占多少字节,数据类型或者变量名
 	// sizeof(数据类型或者变量名)
 	//short
+	// [补充] sizeof 的结果类型是 size_t, 标准占位符是 %zu (不是 %d)
 	printf("%zu\n",sizeof(short));
 	printf("%zu\n", sizeof(a));
 	//int
@@ -64,10 +69,14 @@ int main()
 	printf("%u\n",f);
 
 	//例如:
-	unsigned int g = -10;          //添加小数点,也会变为乱码
+	// [易错] 给无符号变量赋负数不会报错, 但会按补码解释成一个巨大的正数
+	// 这条本身就在演示这个"陷阱", 属于故意写的
+	unsigned int g = -10;
 	printf("%u\n", g);
 
 	//整数默认类型为int
+	// [补充] 打印时占位符必须和实际类型匹配:
+	//   short -> %d可(会被提升), long -> %ld, long long -> %lld, unsigned -> %u, size_t -> %zu
 
 	return 0;
 }

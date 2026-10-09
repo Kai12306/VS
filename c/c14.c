@@ -18,9 +18,12 @@ int main()
 	//2.键盘录入三个小数,分别表示长方体的长,宽,高
 	printf("输入三个小数,分别表示长方体的长, 宽, 高\n");
 	scanf("%lf %lf %lf", &length, &width, &height);
+	// [易错] double 在 scanf 里必须用 %lf (小写L); 用 %f 会写错字节数导致读到 0
+	// [对照] printf 里 double 用 %f 就行, scanf 才严格要求 %lf —— 这是最容易踩的坑
 
 	//3.求A面,B面,C面的面积
 	double  areaA = length * width;
+	// [补充] 长方体三组对面 A/B/C, 分别是 长*宽 / 长*高 / 宽*高
 	double  areaB = length * height;
 	double  areaC = width *   height;
 		

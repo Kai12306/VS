@@ -24,6 +24,8 @@ int main()
 	}*/
 
 
+	// [正名] switch 语法里 case 后面跟的是冒号 : 不是分号;
+	//        写成分号编译不过, 原文这里是在提醒自己别写错
 	//  case后面的 分号其实是冒号
 	
 	
@@ -61,7 +63,9 @@ int main()
 	break;
 
 	case 3:
-	printf("使用抱枕三\n");
+		printf("使用抱枕三\n");
+		// [故意] 这里没写 break, 是刻意演示"穿透"; 实际会连着打出"抱枕四"
+		// [易错] 忘了 break 是 switch 最常见的 bug
 
 	case 4:
 	printf("使用抱枕四\n");
@@ -86,6 +90,7 @@ int main()
 }
 
 	int sport;
+	// [易错] scanf 前没有提示语, 用户不知道要输入什么; 加一句 printf 提示更友好
 	scanf("%d", &sport);
 	
 	if (1 <= sport && sport <= 7)
@@ -123,6 +128,7 @@ int main()
 			printf("休息\n");
 			break;
 
+		// [补充] 外层已经有 1~7 的范围判断, 这里的 default 永远走不到, 属于冗余(无害)
 		default:
 			printf("没有这个星期\n");
 			break;
