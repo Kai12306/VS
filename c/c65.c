@@ -1,4 +1,6 @@
 #include<stdio.h>
+void swap(int* p1, int* p2, int len);
+
 int main()
 {
 	//没有类型的指针:
@@ -26,8 +28,13 @@ int main()
 	void 没有任何类型，好处可以接受任意类型指针记录的内存地址
 	*/
 
-	/*void* p3 = p1;
-	void* p4 = p2;*/
+
+
+
+	/*
+	void* p3 = p1;
+	void* p4 = p2;
+	*/
 
 	//缺点: void 类型的指针,无法获取变量里的数据，也不能进行加减的运算。
 
@@ -36,9 +43,15 @@ int main()
 	会直接报错
 	*/
 
+	//调用函数交换数据
+	int c = 100;
+	int d = 200;
 
+	//改为long long型也可以,但此时括号里面的len需要进行改变
 
+	swap(&c, &d, 4);  //4与len有关
 
+	printf("c=%d,d=%d\n", c, d);
 
 
 
@@ -65,10 +78,23 @@ void swap(int* p1, int* p2,int len)
 	char* pc1 = p1;
 	char* pc2 = p2;
 
+	char temp = 0;
+
 	//以字节为单位，一个字节一个字节的进行交换
 	for (int i = 0;i < len;i++)
 	{
+		temp = *pc1;
+		*pc1 = *pc2;
+		*pc2 = temp;
+
+		pc1++;
+		pc2++;
 
 	}
 
+
+	//int arr[5] = { 10, 20, 30, 40, 50 };
+	//int* p = arr;
+	//*(p + 1)   // 先移动指针再取值 = arr[1] = 20
+	//	* p + 1     // 先取值再加1     = 10 + 1 = 11
 }
