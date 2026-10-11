@@ -56,12 +56,6 @@ int main()
 	scanf("%d",&choose);
 	printf("\n");
 
-
-	printf("1是加法\n");
-	printf("2是减法\n");
-	printf("3是乘法\n");
-	printf("4是除法\n");
-
 	if (choose < 1 || choose > 4)
 	{
 		printf("输入有误\n");
@@ -71,7 +65,7 @@ int main()
 	// 到这里，choose 一定是 1~4
 
 	//3.根据用户的选择,调用不同的函数
-	scanf("%d",&choose);
+	
 	int res = (p[choose - 1])(num1, num2);
 
 		printf("\n");
